@@ -8,6 +8,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { ArrowLeft } from "lucide-react"
+
+import Link from "next/link"
 
 export function SignupForm({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
   const [formData, setFormData] = useState({
@@ -47,6 +50,13 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
+      <Link
+        href="/"
+        className=" p-2 rounded-full hover:bg-gray-100 hover:text-black transition-colors w-9 h-9"
+        aria-label="Go back"
+      >
+        <ArrowLeft className="h-5 w-5" />
+      </Link>
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Sign Up</CardTitle>

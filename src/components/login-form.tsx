@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -8,6 +9,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
+import { ArrowLeft } from "lucide-react"
+import { ModeToggle } from "./themeToggel"
 
 export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
   const [email, setEmail] = useState("")
@@ -17,8 +20,8 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
     if (role === "admin") {
       setEmail("admin@example.com")
       setPassword("admin123")
-    } else if (role === "super") {
-      setEmail("super@example.com")
+    } else if (role === "modirator") {
+      setEmail("modirator@example.com")
       setPassword("super123")
     } else if (role === "viewer") {
       setEmail("viewer@example.com")
@@ -28,6 +31,15 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
+      
+      <Link
+        href="/"
+        className=" p-2 rounded-full hover:bg-gray-100 hover:text-black transition-colors w-9 h-9"
+        aria-label="Go back"
+      >
+        <ArrowLeft className="h-5 w-5" />
+      </Link>
+      
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
@@ -72,8 +84,8 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
                 <Button type="button" variant="outline" onClick={() => fillCredentials("admin")}>
                   Admin
                 </Button>
-                <Button type="button" variant="outline" onClick={() => fillCredentials("super")}>
-                  Super
+                <Button type="button" variant="outline" onClick={() => fillCredentials("modirator")}>
+                  modirator
                 </Button>
                 <Button type="button" variant="outline" onClick={() => fillCredentials("viewer")}>
                   Viewer
@@ -85,6 +97,7 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
               <a href="#" className="underline underline-offset-4">
                 Sign up
               </a>
+              <ModeToggle />
             </div>
           </form>
         </CardContent>

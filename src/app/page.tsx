@@ -1,18 +1,17 @@
 import React from 'react';
+import HeroSection from '@/components/hero-section';
+import Features from '@/components/features';
+import ContentSection from '@/components/content';
+import FooterSection from '@/components/footer';
 
 const AppPage: React.FC = () => {
     return (
-        <div>
-            <header>
-                <h1>Welcome to Saas Dashboard</h1>
-            </header>
-            <main>
-                <p>This is the main content of the app page.</p>
-            </main>
-            <footer>
-                <p>&copy; {new Date().getFullYear()} Saas Dashboard. All rights reserved.</p>
-            </footer>
-        </div>
+        <main>
+           <HeroSection />
+           <ContentSection />
+           <Features />
+           <FooterSection />
+        </main>
     );
 };
 
